@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Auth Now",
+    "slug": "auth-now",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.authnow.qrauth",
+      "permissions": [
+        "CAMERA"
+      ]
+    },
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSCameraUsageDescription": "A câmera é usada para autenticar QR Codes."
+      }
+    }
+  }
+}
