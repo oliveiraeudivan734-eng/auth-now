@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="AUTH-NOW — gestão de produtos e verificação de autenticidade.">
+  <title>AUTH-NOW — Autenticidade em cada origem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="AUTH-NOW início">
+        <span class="brand-mark">A<span>•</span></span>
+        <span class="brand-name">AUTH<span>NOW</span></span>
+      </a>
+      <div class="workspace-label">PLATAFORMA</div>
+      <nav class="navigation" aria-label="Navegação principal">
+        <button class="nav-link active" data-view="dashboard"><span class="nav-icon">▦</span> Visão geral</button>
+        <button class="nav-link" data-view="products"><span class="nav-icon">◇</span> Produtos</button>
+        <button class="nav-link" data-view="lots"><span class="nav-icon">▤</span> Lotes</button>
+        <button class="nav-link" data-view="qrcodes"><span class="nav-icon">▦</span> QR Codes</button>
+        <button class="nav-link" data-view="verify"><span class="nav-icon">✓</span> Verificar produto</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="secure-card"><span class="secure-dot"></span><div><strong>Proteção ativa</strong><small>Verificações seguras</small></div></div>
+        <button class="nav-link" data-view="settings"><span class="nav-icon">⚙</span> Configurações</button>
+        <div class="profile"><div class="avatar">AN</div><div><strong>Administrador</strong><small>Conta AUTH-NOW</small></div><span class="profile-more">···</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menu-toggle" class="mobile-menu" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-current">Visão geral</strong></div>
+        <div class="topbar-right"><span class="connection"><i></i><span id="connection-label">Servidor não configurado</span></span><div class="avatar avatar-small">AN</div></div>
+      </header>
+
+      <div class="content">
+        <section class="view active" id="view-dashboard">
+          <div class="welcome-row"><div><div class="eyebrow">SEGURANÇA DO SEU NEGÓCIO</div><h1>Autenticidade em cada origem.</h1><p class="lead">Gerencie seus produtos, proteja seus lotes e dê confiança a cada cliente.</p></div><button class="button button-primary" data-go="products"><span>＋</span> Cadastrar produto</button></div>
+          <div class="notice notice-info"><span class="notice-symbol">i</span><div><strong>Conecte seu servidor para começar</strong><p>Os dados e as confirmações de autenticidade vêm exclusivamente do seu servidor. Configure a URL em <button class="inline-link" data-go="settings">Configurações</button>.</p></div></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-heading"><span>Produtos cadastrados</span><span class="stat-icon indigo">◇</span></div><strong id="stat-products">—</strong><small>Dados carregados do servidor</small></article>
+            <article class="stat-card"><div class="stat-heading"><span>Lotes registrados</span><span class="stat-icon mint">▤</span></div><strong id="stat-lots">—</strong><small>Rastreabilidade em um só lugar</small></article>
+            <article class="stat-card"><div class="stat-heading"><span>QR Codes gerados</span><span class="stat-icon amber">▦</span></div><strong id="stat-codes">—</strong><small>Emitidos pelo servidor</small></article>
+            <article class="stat-card"><div class="stat-heading"><span>Verificações</span><span class="stat-icon blue">✓</span></div><strong id="stat-checks">—</strong><small>Confiança comprovada</small></article>
+          </div>
+          <div class="section-heading"><div><h2>Acesso rápido</h2><p>Escolha uma ação para continuar.</p></div></div>
+          <div class="action-grid">
+            <button class="action-card" data-go="products"><span class="action-icon indigo">＋</span><span><strong>Cadastrar produto</strong><small>Adicione um produto ao catálogo</small></span><b>↗</b></button>
+            <button class="action-card" data-go="lots"><span class="action-icon mint">▤</span><span><strong>Registrar lote</strong><small>Organize a produção por lote</small></span><b>↗</b></button>
+            <button class="action-card" data-go="qrcodes"><span class="action-icon amber">▦</span><span><strong>Gerar QR Codes</strong><small>Solicite códigos únicos ao servidor</small></span><b>↗</b></button>
+            <button class="action-card" data-go="verify"><span class="action-icon blue">✓</span><span><strong>Verificar autenticidade</strong><small>Confirme um código com o servidor</small></span><b>↗</b></button>
+          </div>
+          <div class="section-heading recent-heading"><div><h2>Produtos recentes</h2><p>Seu catálogo sincronizado.</p></div><button class="button button-quiet" data-go="products">Ver produtos <span>→</span></button></div>
+          <div class="table-card"><div class="table-scroll"><table><thead><tr><th>PRODUTO</th><th>CATEGORIA</th><th>LOTE</th><th>STATUS</th></tr></thead><tbody id="recent-products"><tr><td colspan="4" class="empty-cell">Configure o servidor para carregar seus produtos.</td></tr></tbody></table></div></div>
+        </section>
+
+        <section class="view" id="view-products">
+          <div class="page-heading"><div><div class="eyebrow">CATÁLOGO</div><h1>Produtos</h1><p>Cadastre e acompanhe os produtos protegidos pela AUTH-NOW.</p></div><button class="button button-primary" id="open-product-form"><span>＋</span> Novo produto</button></div>
+          <div class="form-card hidden" id="product-form-card"><div class="card-title"><div><h2>Novo produto</h2><p>As informações serão enviadas ao servidor configurado.</p></div><button class="icon-button" data-close="product-form-card" aria-label="Fechar">×</button></div><form id="product-form" class="form-grid"><label>Nome do produto<input name="name" required maxlength="120" placeholder="Ex.: Café especial 250 g"></label><label>Categoria<input name="category" required maxlength="80" placeholder="Ex.: Alimentos"></label><label>Marca<input name="brand" maxlength="80" placeholder="Nome da marca"></label><label>SKU / referência<input name="sku" maxlength="80" placeholder="Ex.: CAF-250"></label><label class="field-wide">Descrição<textarea name="description" rows="3" maxlength="500" placeholder="Informações sobre o produto"></textarea></label><div class="field-wide form-actions"><button class="button button-quiet" type="button" data-close="product-form-card">Cancelar</button><button class="button button-primary" type="submit">Salvar produto</button></div></form></div>
+          <div class="table-card"><div class="table-toolbar"><div><strong>Todos os produtos</strong><span id="product-count">—</span></div><button class="button button-quiet" id="refresh-products">↻ Atualizar</button></div><div class="table-scroll"><table><thead><tr><th>PRODUTO</th><th>CATEGORIA</th><th>MARCA</th><th>SKU</th><th>STATUS</th></tr></thead><tbody id="products-table"><tr><td colspan="5" class="empty-cell">Configure o servidor para carregar seus produtos.</td></tr></tbody></table></div></div>
+        </section>
+
+        <section class="view" id="view-lots">
+          <div class="page-heading"><div><div class="eyebrow">RASTREABILIDADE</div><h1>Lotes</h1><p>Organize a produção e acompanhe a origem de cada unidade.</p></div><button class="button button-primary" id="open-lot-form"><span>＋</span> Novo lote</button></div>
+          <div class="form-card hidden" id="lot-form-card"><div class="card-title"><div><h2>Registrar lote</h2><p>O lote ficará vinculado a um produto cadastrado.</p></div><button class="icon-button" data-close="lot-form-card" aria-label="Fechar">×</button></div><form id="lot-form" class="form-grid"><label class="field-wide">Produto<select name="productId" id="lot-product-select" required><option value="">Carregando produtos…</option></select></label><label>Código do lote<input name="code" required maxlength="100" placeholder="Ex.: LOTE-2026-001"></label><label>Quantidade de unidades<input name="quantity" type="number" min="1" step="1" required placeholder="Ex.: 500"></label><label>Data de fabricação<input name="manufacturedAt" type="date"></label><label>Validade<input name="expiresAt" type="date"></label><div class="field-wide form-actions"><button class="button button-quiet" type="button" data-close="lot-form-card">Cancelar</button><button class="button button-primary" type="submit">Salvar lote</button></div></form></div>
+          <div class="table-card"><div class="table-toolbar"><div><strong>Todos os lotes</strong><span id="lot-count">—</span></div><button class="button button-quiet" id="refresh-lots">↻ Atualizar</button></div><div class="table-scroll"><table><thead><tr><th>LOTE</th><th>PRODUTO</th><th>UNIDADES</th><th>FABRICAÇÃO</th><th>VALIDADE</th></tr></thead><tbody id="lots-table"><tr><td colspan="5" class="empty-cell">Configure o servidor para carregar seus lotes.</td></tr></tbody></table></div></div>
+        </section>
+
+        <section class="view" id="view-qrcodes">
+          <div class="page-heading"><div><div class="eyebrow">IDENTIFICAÇÃO SEGURA</div><h1>QR Codes</h1><p>Os códigos são emitidos pelo servidor e vinculados a um lote.</p></div></div>
+          <div class="notice notice-info"><span class="notice-symbol">i</span><div><strong>Códigos únicos, emitidos com segurança</strong><p>O navegador não inventa nem valida códigos. Solicite ao servidor os QR Codes vinculados às unidades do lote.</p></div></div>
+          <div class="form-card"><div class="card-title"><div><h2>Gerar códigos para um lote</h2><p>Selecione um lote e informe quantos códigos deseja solicitar.</p></div><span class="card-icon amber">▦</span></div><form id="qrcode-form" class="form-grid"><label class="field-wide">Lote<select name="lotId" id="qrcode-lot-select" required><option value="">Carregando lotes…</option></select></label><label>Quantidade de QR Codes<input name="quantity" type="number" min="1" max="1000" required placeholder="Ex.: 100"></label><div class="form-actions align-end"><button class="button button-primary" type="submit">Solicitar QR Codes <span>→</span></button></div></form></div>
+          <div id="qrcode-result" class="qr-result hidden"><div class="card-title"><div><h2>Códigos recebidos</h2><p>Emitidos pelo servidor. Imprima ou salve cada código.</p></div><button class="button button-quiet" id="print-qrcodes">Imprimir</button></div><div id="qrcode-grid" class="qr-grid"></div></div>
+        </section>
+
+        <section class="view" id="view-verify">
+          <div class="page-heading"><div><div class="eyebrow">CONFIANÇA COMPROVADA</div><h1>Verificar autenticidade</h1><p>Consulte o servidor para confirmar a origem de um produto.</p></div></div>
+          <div class="verify-layout"><div class="verify-card"><div class="verify-emblem">✓</div><h2>Confira antes de confiar.</h2><p>Digite o código do produto ou cole o conteúdo lido pelo QR Code. A confirmação é feita diretamente pelo servidor.</p><form id="verify-form"><label for="verify-token">Código de autenticidade</label><div class="verify-input-row"><input id="verify-token" name="token" required autocomplete="off" placeholder="Digite ou cole o código"><button class="button button-primary" type="submit">Verificar <span>→</span></button></div></form><div id="verify-result" class="verify-result hidden" role="status" aria-live="polite"></div><div class="verify-footnote"><span>◈</span> O AUTH-NOW não confirma autenticidade sem uma resposta válida do servidor.</div></div><aside class="verify-side"><div class="side-shield">◈</div><h3>Uma confirmação em que você pode confiar.</h3><p>O resultado só é exibido após uma resposta válida do servidor AUTH-NOW.</p><div class="side-line"></div><small>Verificação segura · Resultado em tempo real</small></aside></div>
+        </section>
+
+        <section class="view" id="view-settings">
+          <div class="page-heading"><div><div class="eyebrow">PREFERÊNCIAS</div><h1>Configurações</h1><p>Conecte esta interface ao seu servidor AUTH-NOW.</p></div></div>
+          <div class="form-card settings-card"><div class="card-title"><div><h2>Conexão com o servidor</h2><p>Use a URL HTTPS da API autorizada para este ambiente.</p></div><span class="card-icon indigo">⌘</span></div><form id="settings-form" class="form-grid"><label class="field-wide">URL base da API<input name="apiUrl" type="url" inputmode="url" placeholder="https://api.seudominio.com" autocomplete="url"><small>As rotas usadas por esta interface estão descritas no README de web/.</small></label><div class="field-wide form-actions"><button class="button button-quiet" type="button" id="clear-api">Desconectar</button><button class="button button-primary" type="submit">Salvar conexão</button></div></form><div class="settings-warning"><strong>Privacidade e segurança</strong><p>A URL é armazenada apenas neste navegador. Não insira chaves secretas nesta interface pública. A API deve validar permissões e autenticar operações administrativas no servidor.</p></div></div>
+        </section>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        <footer class="footer"><span>AUTH-NOW</span><span>Autenticidade em cada origem.</span><span>© 2026 AUTH-NOW</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7Jf5D4eIY4iI3H9V7n6MApMqh6VJ9u6Zg3z0ZpF8oQ9g2kKp2v5N0Q4xJpJ9c5e1gTz6QkM0x4xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js"></script>
+</body>
+</html>
